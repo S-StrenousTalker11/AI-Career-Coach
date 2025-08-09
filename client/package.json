@@ -1,0 +1,24 @@
+{
+  "name": "ai-c-c",
+  "version": "1.0.0",
+  "description": "The beginning of the AI Career Coach.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S-StrenousTalker11/AI-Career-Coach.git"
+  },
+  "keywords": [
+    "AI",
+    "Career",
+    "Coach"
+  ],
+  "author": "Sampanna Nampalli, Ajay Kumbhar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S-StrenousTalker11/AI-Career-Coach/issues"
+  },
+  "homepage": "https://github.com/S-StrenousTalker11/AI-Career-Coach#readme"
+}
