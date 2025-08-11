@@ -1,0 +1,244 @@
+/* Navbar Component Styles - AI Career Coach Unique Design */
+
+.navbar {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+/* Logo Styles - AI Career Coach Brand */
+.navbar-logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1f2937;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  outline: none;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo:hover {
+  color: #667eea;
+  transform: translateY(-2px);
+  text-decoration: none !important;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Desktop Menu Styles - AI Career Coach Style */
+.navbar-desktop-menu {
+  display: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.navbar-desktop-menu a {
+  color: #374151;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  position: relative;
+  display: inline-block;
+  outline: none;
+}
+
+.navbar-desktop-menu a:hover {
+  color: #667eea;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+}
+
+.navbar-desktop-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.navbar-desktop-menu a:hover::after {
+  width: 100%;
+}
+
+/* CTA Button - AI Career Coach Style */
+.navbar-cta {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-block;
+  outline: none;
+  border: none;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.navbar-cta:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Mobile Menu Button - AI Career Coach Style */
+.navbar-mobile-button {
+  display: block;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  outline: none;
+  border-radius: 8px;
+}
+
+.navbar-mobile-button:hover {
+  color: #667eea;
+  background-color: rgba(102, 126, 234, 0.1);
+  transform: scale(1.1);
+}
+
+/* Mobile Menu Styles - AI Career Coach Style */
+.navbar-mobile-menu {
+  display: none;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar-mobile-menu a {
+  display: block;
+  color: #374151;
+  font-weight: 600;
+  text-decoration: none !important;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  outline: none;
+}
+
+.navbar-mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+.navbar-mobile-menu a:hover {
+  color: #667eea;
+  padding-left: 1rem;
+  text-decoration: none !important;
+  background-color: rgba(102, 126, 234, 0.05);
+  border-radius: 8px;
+  margin: 0 -0.5rem;
+  padding-left: 1.5rem;
+}
+
+/* Mobile CTA Button - AI Career Coach Style */
+.navbar-mobile-cta {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff !important;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none !important;
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.navbar-mobile-cta:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .navbar-desktop-menu {
+    display: flex;
+  }
+  
+  .navbar-mobile-button {
+    display: none;
+  }
+  
+  .navbar-mobile-menu {
+    display: none !important;
+  }
+}
+
+/* Animation for mobile menu - AI Career Coach Style */
+.navbar-mobile-menu.show {
+  display: block;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Active link styles - AI Career Coach Style */
+.navbar-link.active {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.navbar-link.active::after {
+  width: 100%;
+}
+
+/* Focus styles for accessibility */
+.navbar-logo:focus,
+.navbar-desktop-menu a:focus,
+.navbar-mobile-menu a:focus,
+.navbar-mobile-button:focus {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
