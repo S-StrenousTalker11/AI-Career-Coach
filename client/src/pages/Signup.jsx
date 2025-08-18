@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signIn } from '../services/firebase';
-import { Eye, EyeOff, Mail, Lock, AlertCircle } from 'lucide-react';
+import { signUp } from '../services/firebase';
+import { Eye, EyeOff, Mail, Lock, User, AlertCircle } from 'lucide-react';
 import './Auth.css';
 
-export default function Login() {
+export default function Signup() {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,32 +26,37 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
     try {
-      await signIn(formData.email, formData.password);
+      await signUp(formData.email, formData.password);
       navigate('/dashboard');
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Signup error:', error);
       switch (error.code) {
-        case 'auth/user-not-found':
-          setError('No account found with this email address');
-          break;
-        case 'auth/wrong-password':
-          setError('Incorrect password. Please try again');
+        case 'auth/email-already-in-use':
+          setError('An account with this email already exists');
           break;
         case 'auth/invalid-email':
           setError('Please enter a valid email address');
           break;
-        case 'auth/user-disabled':
-          setError('This account has been disabled');
-          break;
-        case 'auth/too-many-requests':
-          setError('Too many failed attempts. Please try again later');
+        case 'auth/weak-password':
+          setError('Password is too weak. Please choose a stronger password');
           break;
         default:
-          setError('Failed to sign in. Please check your credentials and try again.');
+          setError('Failed to create account. Please try again.');
       }
     } finally {
       setLoading(false);
@@ -60,11 +67,11 @@ export default function Login() {
     <div className="auth-container">
       <div className="auth-card">
         <div className="auth-header">
-          <h2 className="auth-title">Welcome Back</h2>
+          <h2 className="auth-title">Create Account</h2>
           <p className="auth-subtitle">
             Or{' '}
-            <Link to="/signup" className="auth-link">
-              create a new account
+            <Link to="/login" className="auth-link">
+              sign in to your existing account
             </Link>
           </p>
         </div>
@@ -107,7 +114,7 @@ export default function Login() {
                 id="password"
                 name="password"
                 type={showPassword ? 'text' : 'password'}
-                autoComplete="current-password"
+                autoComplete="new-password"
                 required
                 value={formData.password}
                 onChange={handleChange}
@@ -124,10 +131,31 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="forgot-password-link">
-            <Link to="/forgot-password" className="auth-link">
-              Forgot your password?
-            </Link>
+          <div className="form-group">
+            <label htmlFor="confirmPassword" className="form-label">
+              Confirm Password
+            </label>
+            <div className="input-container">
+              <Lock className="input-icon" size={20} />
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? 'text' : 'password'}
+                autoComplete="new-password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="auth-input"
+                placeholder="Confirm your password"
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
 
           <button
@@ -138,10 +166,10 @@ export default function Login() {
             {loading ? (
               <>
                 <div className="loading-spinner"></div>
-                Signing in...
+                Creating account...
               </>
             ) : (
-              'Sign in'
+              'Create Account'
             )}
           </button>
         </form>

@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, LogOut, User } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { logOut } from "../services/firebase";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   const menuItems = [
     { name: "Home", path: "/" },
@@ -14,6 +18,15 @@ export default function Navbar() {
     { name: "Learning Hub", path: "/learning" },
     { name: "Dashboard", path: "/dashboard" },
   ];
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate('/');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -36,9 +49,25 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link to="/login" className="navbar-cta">
-              Get Started
-            </Link>
+            {currentUser ? (
+              <div className="auth-buttons-container">
+                <Link to="/profile" className="auth-profile-link">
+                  <User size={16} />
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="auth-logout-button"
+                >
+                  <LogOut size={16} />
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link to="/login" className="navbar-cta">
+                Get Started
+              </Link>
+            )}
           </div>
 
       
@@ -63,9 +92,28 @@ export default function Navbar() {
             {item.name}
           </Link>
         ))}
-        <Link to="/login" className="navbar-mobile-cta" onClick={() => setIsOpen(false)}>
-          Get Started
-        </Link>
+        {currentUser ? (
+          <>
+            <Link to="/profile" className="navbar-link flex items-center gap-1" onClick={() => setIsOpen(false)}>
+              <User size={16} />
+              Profile
+            </Link>
+            <button
+              onClick={() => {
+                handleLogout();
+                setIsOpen(false);
+              }}
+              className="navbar-mobile-cta flex items-center gap-1"
+            >
+              <LogOut size={16} />
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className="navbar-mobile-cta" onClick={() => setIsOpen(false)}>
+            Get Started
+          </Link>
+        )}
       </div>
     </nav>
   );

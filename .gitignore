@@ -1,0 +1,67 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+server/dist/
+server/build/
+client/dist/
+client/.vite/
+
+# Environment files (keep examples tracked)
+.env
+.env.*
+!.env.example
+client/.env
+client/.env.*
+!client/.env.example
+server/.env
+server/.env.*
+!server/.env.example
+
+# Logs & coverage
+logs/
+*.log
+*.log.*
+coverage/
+.nyc_output/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.orig
+.eslintcache
+
+# Caches & temp
+.cache/
+.tmp/
+.temp/
+
+# Hosting/platform
+.vercel/
+.netlify/
+
+# Firebase/Admin secrets (do not commit service account files)
+server/config/serviceAccount*.json
+server/config/*secret*.json
+server/config/*.key.json
+server/config/firebaseAdmin.*.json
+server/config/firebase-adminsdk-*.json
+
+# Local overrides
+*.local
+
+
+

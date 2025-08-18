@@ -83,6 +83,60 @@
   width: 100%;
 }
 
+/* Authentication Buttons Container */
+.auth-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.auth-profile-link {
+  color: #374151;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.auth-profile-link:hover {
+  color: #667eea;
+  background-color: rgba(102, 126, 234, 0.1);
+  text-decoration: none !important;
+  transform: translateY(-1px);
+}
+
+.auth-logout-button {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff !important;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.auth-logout-button:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
 /* CTA Button - AI Career Coach Style */
 .navbar-cta {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
